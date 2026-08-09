@@ -170,7 +170,30 @@ class BinarySearchTree(BinaryTree):
         while node.right: # enquanto existir nó a direita, siga descendo até chegar no útimo nó, esse será o maior valor
             node = node.right
         return node.data
-    
+
+    def remove(self, value, node=ROOT): # removendo o valor que queremos remover e o nó, caso não passarmos nada, será a raiz
+
+        if node == ROOT:
+            node = self.root
+
+        if node is None:
+            return node
+
+        if value < node.data: # o valor que queremos remover for menor do que o nó da vez
+                              # descemos pela esquerda
+            # pós isso vamos substituir a sub-árvore a esquerda do nó pelo que a função irá nos retornar 
+            # tentando remover esse mesmo valor do nó que está a esquerda, conferindo valor por valor até encontrar
+            # o nó que desejamos remover
+            node.left = self.remove(value, node.left)
+
+            # seguir a mesma lógica acima, porém a direita
+        elif value > node.data:
+            node.right = self.remove(value, node.right)
+        else: # quer dizer que encontramos o nó, pois o valor parâmetrado é igual
+            if node.left is None and node.right is None: # conferência de folha, caso não tenha filhos quer dizer que o mesmo é uma folha!
+                return None # retornamos None para dizer que aquele cara foi removido e que ele agora equivale ao VAZIO.
+
+        return
 # testando as primeira funcionalidade da árvore binária
 def main():
     # tree = BinaryTree(4) # <- Definindo a raiz da árvore
