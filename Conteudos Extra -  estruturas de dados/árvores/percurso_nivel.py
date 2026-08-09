@@ -30,6 +30,16 @@ def example_tree(): # ESSA FUNÇÃO ESTÁ AQUI APENAS PARA FAZER UMA EXIBIÇÃO 
 
     return tree
 
+def extanded_tree(): # função com a mesma estrutura da função acima, criada apenas para testar a inserção de 2 valores novos para teste
+                     # no arquivo (remocao.py)
+    values = [61, 89, 66, 43, 51, 16, 55, 11, 79, 77, 82, 32, 100, 90]
+    tree = BinarySearchTree()
+
+    for value in values:
+        tree.insert(value)
+    return tree
+    
+
 binary_search_tree = example_tree()
 binary_search_tree.levelorder_search()
 
