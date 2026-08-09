@@ -17,7 +17,7 @@ print('\n')
 binary_search_tree = extanded_tree()
 binary_search_tree.inorder_search()
 
-value = 11
+value = 61
 binary_search_tree.remove(value)
 
 print('\n')
@@ -32,3 +32,5 @@ print('\n')
 
 print('Máximo:', binary_search_tree.search_max())
 print('Mínimo:', binary_search_tree.search_min())
+
+print('\n')
