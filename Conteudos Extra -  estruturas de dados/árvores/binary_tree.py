@@ -190,8 +190,21 @@ class BinarySearchTree(BinaryTree):
         elif value > node.data:
             node.right = self.remove(value, node.right)
         else: # quer dizer que encontramos o nó, pois o valor parâmetrado é igual
-            if node.left is None and node.right is None: # conferência de folha, caso não tenha filhos quer dizer que o mesmo é uma folha!
-                return None # retornamos None para dizer que aquele cara foi removido e que ele agora equivale ao VAZIO.
+            # if node.left is None and node.right is None: # conferência de folha, caso não tenha filhos quer dizer que o mesmo é uma folha!
+            #     return None # retornamos None para dizer que aquele cara foi removido e que ele agora equivale ao VAZIO.
+            
+            if node.left is None: # <- caso o filho da esquerda do nó removido seja vazio
+                return node.right # <- ligamos a sub-árvore a direita ao nó que antecedia o nó removido
+            # mesma lógica da condicional acima, alterando apenas o lado da sub-árvore
+            elif node.right is None:
+                return node.left
+            else: # caso tenha filhos nos dois nós abaixo, teremos que calcular o substituto
+
+                substitute = self.min(node.right) # <- substituto é o sucessor do valor a ser removido
+                node.data = substitute # <- ao invés de trocar a posição dos nós, trocamos o valor
+                node.right = self.remove(substitute, node.right) # <- depois, remove o substituto da subárvore à direita
+
+            return node
 
         return
 # testando as primeira funcionalidade da árvore binária

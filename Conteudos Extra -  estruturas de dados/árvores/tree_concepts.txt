@@ -251,5 +251,3 @@
     valor dentro do conjunto dos maiores valores. No nosso exemplo teríamos o 61, que se caso remido, substituiríamos o mesmo pelo 66, que é o cara
     a esquerda sem filho a esquerda, pós isso tiramos o 66 de seus local e alocamos na raiz, como podemos ver na arvore exemplar ele também tem
     filhos e para seguir com a padronização da árvore ligamos o seu filho ao nó acima do nó removido, que no caso seria ligar o 79 ao 89.
-
-    
