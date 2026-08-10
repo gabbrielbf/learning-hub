@@ -4,3 +4,15 @@
 
 - Complexidades:
     
+    Da mais rápida até a mais lenta:
+
+    O(1) - Tempo constante (ou instantâneo):
+
+        Não importa se nossa estrutura tem 1 ou 1 bilhão de elementos, o tempo gasto para percorrer e encontrar determinado
+        item será o mesmo para todos.
+
+        Ex.
+            Acessar um elemento em uma array pelo indice (arr[3]).
+
+        Uma boa ideologia para facilitar a compreensão é a ideia da pilha de livros, se pegarmos o primeiro item dessa pilha
+        (indepentende do tamanho que ela tenha) sempre precisaremos executar um único movimento por vêz.
