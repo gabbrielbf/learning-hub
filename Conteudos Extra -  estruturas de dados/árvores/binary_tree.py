@@ -93,6 +93,19 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
 
             print(node, end=' ') # exibindo o nó da vez armazenado
 
+    def preorder_search(self, node=ROOT): # não há segredo na compreensão de um percurso pré ordem, basta seguir a mesma ciência por trás do
+                                          # pós ordem, com um diferencial que iremos sempre partir da raiz ao invès de deixar a raiz por último
+        if node == ROOT: 
+            node = self.root
+
+        print(node) # exibe o nó da vez, que no momento é a RAIZ
+
+        if node.left: # parte para a sub-árvore da esquerda
+            self.preorder_search(node.left)
+
+        if node.right: # parte para a sub-árvore da direita depois que todos os filhos da esquerda sumiram
+            self.preorder_search(node.right)
+
     def height(self, node=None): # replicando o método acima aqui abaixo para calcular a altura de determinado lado de a árvore 
 
         if node is None:
