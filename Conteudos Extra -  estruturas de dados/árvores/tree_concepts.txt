@@ -180,6 +180,22 @@
 
     - (percurso_nivel.py)
 
+  Percurso pré-ordem, o que é? É uma forma de visitar todos os nós de uma árvore binária, o princípio básico que temos para conseguir diferenciar
+  esse cara do Percurso pós ordem é que o mesmo segue uma ordem bem específica de visitação, representada pela sigla R-E-D:
+    Ex.
+      1. Visita o nó atual, no caso a raiz
+      2. Percorre toda a sub-árvore da esquerda recursivamente
+      3. Percorre toda a sub-árvore da direita recursivamente
+
+      Árvore para exemplificar a compreensão:
+
+          A
+         / \
+        B   C
+
+      Visita a raiz, no caso A, em sequência segue para a sub-árvore esquerda B, e por último segue para o C.
+      Seu diferencial com relação a pós ordem é que ele prioriza primeiro a busca pelas raizes, já o pós deixa a raiz por último!
+        
 - Árvore Binária de busca, o que é? Tudo que sabemos até aqui sobre árvore no geral, serve para a árvore binária de busca. Seu diferencial
   é que sempre que olhamos para um nó x, sabemos por padrão que a esquerda dele sempre teremos valores menores que o próprio nó em si e a direita
   por consequência sempre terão valores maiores. Essa é a estrutura de dados que vai codificar em si a BUSCA BINÁRIA: https://www.youtube.com/watch?v=zSyV0VaTF3k&pp=ygUOYnVzY2EgYmluw6FyaWE%3D
