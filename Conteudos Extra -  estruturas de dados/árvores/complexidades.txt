@@ -12,7 +12,23 @@
         item será o mesmo para todos.
 
         Ex.
-            Acessar um elemento em uma array pelo indice (arr[3]).
+            1. Acessar um elemento em uma array pelo indice (arr[3]).
 
         Uma boa ideologia para facilitar a compreensão é a ideia da pilha de livros, se pegarmos o primeiro item dessa pilha
         (indepentende do tamanho que ela tenha) sempre precisaremos executar um único movimento por vêz.
+
+    O(log n) - Tempo logarítmico:
+
+        A cada passo que o algorítmo dá, descartamos metade dos dados restantes, o número de operações cresce de forma extremamente lenta
+        a medida que {n} aumenta
+
+        Ex.
+            1. Busca binária em arrays ORDENADOS
+            2. Inserção, remoção e busca em Árvores Binárias de Busca BALANCEADAS (como a AVL ou Red Black)
+
+        Imagine que temos uma lista telefonica x onde queremos encontrar y mas ela possui 1000 páginas, para poupar tempo e processamento
+        (isso se a lista estiver ordenada) dividimos a lista em 2 conferimos se y vem antes ou depois da metade dividida. Indepentende de qaal
+        lado esteja, discartaremos o item central da busca + a outra metade (ou seja, 501) repetimos o processo e em 5 passos ou menos encontraremos
+        o determinado valor no qual a pior das hipóteses para encontra-lo seria percorrer TODOS os 1000 itens até achar y. O que seria ilógico já
+        que esse exemplo em específico possui 1000 itens, mas e se possuisse 1 milhão? 1 bilhão? Ou seja, o tempo e processamento que essa complexidade
+        nos garante é totalmente relevante. 
