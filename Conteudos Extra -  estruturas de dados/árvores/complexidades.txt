@@ -44,7 +44,7 @@
         Podemos exemplificar com uma pilha de documentos desorganizados por exemplo, para achar uma anotação específica, teriamos de seguir justamente 
         esse conceito de tempo linear.
 
-    O (n log n) - Tempo linearítmico (Ou padrão de ouro para ordenar):
+    O(n log n) - Tempo linearítmico (ou padrão de ouro para ordenar):
 
         Essa complexidade se torna pouca coisa mais lenta que o LINEAR O(n). Mas ainda muito eficiente. Geralmente resulta da combinação de dividir o problema pela metade
 
@@ -56,7 +56,7 @@
                 https://www.youtube.com/watch?v=wx5juM9bbFo&pp=ygUKcXVpY2sgc29ydA%3D%3D
                 https://www.youtube.com/watch?v=fZQgE8fYVy4&pp=ygUKaGVhcCBzb3J0IA%3D%3D
 
-    O ((log n)² ou O(log² n)) - Tempo poligarítmico (Log ao quadrado):
+    O((log n)² ou O(log² n)) - Tempo poligarítmico (log ao quadrado):
 
         Para a compreensão deste, basta apenas saber que sua propriedade se dá em elevar a complexidade logarítmica ao quadrado: (log n) * (log n)
 
@@ -71,7 +71,7 @@
         Costuma ser usado em estruturas de dados avançadas para busca multidimensional (como Range Trees de duas dimensões) ou algoritmos de ordenação em redes paralelas
         (como o Bitonic Sort): https://www.youtube.com/watch?v=xBgkUAPbcKk&pp=ygUMQml0b25pYyBTb3J0
         
-    O (n²) - Tempo quadrático (o mais "lento"):
+    O(n²) - Tempo quadrático (o "lento"):
 
         Para cada elemento de uma determinada lista, precisamos iterar sobre todos os outros elementos novamente, caso os dados dobrem (2n), o tempo quadruplica (4*).
 
@@ -85,4 +85,13 @@
 
         Imagine que uma sala tem x pessoas, cada pessoa precisa cumprimentar individualmente todas as outras.
 
-        
+    O(2°) e O(n!) - Exponencial e fatorial (o inviável):
+
+        Significa que o número de operações explode absurdamente rápido. A partir de n = 3o ou n = 50, o algorítmo pode levar milênios, indepentende do
+        supercomputador.
+
+            Ex.
+                1. Gerar todos os subconjuntos de um conjunto (O(2°))
+                2. Resolver o problema do Caixeiro Viajante testando todas as combinações por força bruta (O(n!))
+
+                    https://search.brave.com/search?q=caixeiro+viajante+algoritmo&conversation=096daca7baaca4527ab37e3906ba5863592e
