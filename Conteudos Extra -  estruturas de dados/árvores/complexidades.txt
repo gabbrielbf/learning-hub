@@ -114,6 +114,12 @@ Comparativo prático para (n = 1000 elementos):
     
     O(2°) ou O(n!)      Exponencial         10301 passos 
 
-    
+    [Resumo visual para identificar no código]:
+
+    1. Sem loops ou acesso direto por chave/índice [O(1)]
+    2. Dividindo os dados ao meio a cada iteração [O(log n)]
+    3. 1 Loop simples percorrendo os dados [O(n)]
+    4. Dividir os dados ao meio dentro de um loop [O(n log n)]
+    5, 2 Loops aninhados percorrendo os mesmos dados [O(n²)]
 
     
