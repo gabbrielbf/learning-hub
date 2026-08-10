@@ -2,7 +2,7 @@
   Uma forma de MEDIR o NÚMERO DE OPERAÇÕES de acordo com o aumento da quantidade de dados (n), focando na
   escalabilidade do algorítmo, e não no tempo em segundos.
 
-- Complexidades:
+- Complexidades de tempo:
     
     Da mais rápida até a mais lenta:
 
@@ -44,4 +44,16 @@
         Podemos exemplificar com uma pilha de documentos desorganizados por exemplo, para achar uma anotação específica, teriamos de seguir justamente 
         esse conceito de tempo linear.
 
-        
+    O (n log n) - Tempo Linearítmico (Ou padrão de ouro para ordenar):
+
+        Essa complexidade se torna pouca coisa mais lenta que o LINEAR O(n). Mas ainda muito eficiente. Geralmente resulta da combinação de dividir o problema pela metade
+        (O(log n)) e passar por todos os elementos (O(n)).
+
+        Ex.
+            1. Algoritmos eficientes de ordenação como Merge Sort, QuickSort (no caso médio) e Heap Sort:
+
+                https://www.youtube.com/results?search_query=Merge+Sort
+                https://www.youtube.com/watch?v=wx5juM9bbFo&pp=ygUKcXVpY2sgc29ydA%3D%3D
+                https://www.youtube.com/watch?v=fZQgE8fYVy4&pp=ygUKaGVhcCBzb3J0IA%3D%3D
+
+    
