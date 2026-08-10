@@ -1,3 +1,6 @@
 - Notação Big O, o que é? 
   Uma forma de MEDIR o NÚMERO DE OPERAÇÕES de acordo com o aumento da quantidade de dados (n), focando na
   escalabilidade do algorítmo, e não no tempo em segundos.
+
+- Complexidades:
+    
