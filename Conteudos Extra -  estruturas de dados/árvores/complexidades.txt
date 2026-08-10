@@ -44,7 +44,7 @@
         Podemos exemplificar com uma pilha de documentos desorganizados por exemplo, para achar uma anotação específica, teriamos de seguir justamente 
         esse conceito de tempo linear.
 
-    O (n log n) - Tempo Linearítmico (Ou padrão de ouro para ordenar):
+    O (n log n) - Tempo linearítmico (Ou padrão de ouro para ordenar):
 
         Essa complexidade se torna pouca coisa mais lenta que o LINEAR O(n). Mas ainda muito eficiente. Geralmente resulta da combinação de dividir o problema pela metade
 
@@ -56,7 +56,7 @@
                 https://www.youtube.com/watch?v=wx5juM9bbFo&pp=ygUKcXVpY2sgc29ydA%3D%3D
                 https://www.youtube.com/watch?v=fZQgE8fYVy4&pp=ygUKaGVhcCBzb3J0IA%3D%3D
 
-    O ((log n)² ou O(log² n)) - Tempo Poligarítmico (Log ao quadrado):
+    O ((log n)² ou O(log² n)) - Tempo poligarítmico (Log ao quadrado):
 
         Para a compreensão deste, basta apenas saber que sua propriedade se dá em elevar a complexidade logarítmica ao quadrado: (log n) * (log n)
 
@@ -69,6 +69,20 @@
             Esse é um pouco mais lento que O(log n) ou O(n), mas infinitamente mais rápido que O(n²) para entradas grandes
         
         Costuma ser usado em estruturas de dados avançadas para busca multidimensional (como Range Trees de duas dimensões) ou algoritmos de ordenação em redes paralelas
-        (como o Bitonic Sort): https://www.youtube.com/watch?v=xBgkUAPbcKk&pp=ygUMYml0b25pYyBzb3J0
+        (como o Bitonic Sort): https://www.youtube.com/watch?v=xBgkUAPbcKk&pp=ygUMQml0b25pYyBTb3J0
+        
+    O (n²) - Tempo quadrático (o mais "lento"):
 
-    
+        Para cada elemento de uma determinada lista, precisamos iterar sobre todos os outros elementos novamente, caso os dados dobrem (2n), o tempo quadruplica (4*).
+
+            Ex.
+                1. Dois laços de repetição aninhados (for dentro de for)
+                2. Algoritmos simples de ordenação como Bubble Sort, Selection Sort e Insertion Sort
+
+                    https://www.youtube.com/watch?v=GiNPe_678Ms&pp=ygULQnViYmxlIFNvcnQ%3D
+                    https://www.youtube.com/watch?v=ZT_dT8yn48s&t=2s&pp=ygUOc2VsZWN0aW9uIHNvcnQ%3D
+                    https://www.youtube.com/watch?v=S5no2qT8_xg&pp=ygUbaW5zZXJ0aW9uIHNvcnQgYWxnb3JpdG1hc8Sx
+
+        Imagine que uma sala tem x pessoas, cada pessoa precisa cumprimentar individualmente todas as outras.
+
+        
