@@ -32,3 +32,16 @@
         o determinado valor no qual a pior das hipóteses para encontra-lo seria percorrer TODOS os 1000 itens até achar y. O que seria ilógico já
         que esse exemplo em específico possui 1000 itens, mas e se possuisse 1 milhão? 1 bilhão? Ou seja, o tempo e processamento que essa complexidade
         nos garante é totalmente relevante. 
+
+    O(n) - Tempo linear (ou proporcional):
+
+        Se a quantidade de dados presentes na estrutura dobra, o tempo gasto também dobra. Usando uma relação sempre de 1 para 1.
+
+        Ex.
+            1. Buscar um valor em uma Lista Encadeada ou um Array desordenado.
+            2. Percorrer todos os elementos de uma árvore ou vetor
+
+        Podemos exemplificar com uma pilha de documentos desorganizados por exemplo, para achar uma anotação específica, teriamos de seguir justamente 
+        esse conceito de tempo linear.
+
+        
