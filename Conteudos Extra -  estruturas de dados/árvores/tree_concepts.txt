@@ -268,3 +268,9 @@
       a esquerda sem filho a esquerda, pós isso tiramos o 66 de seus local e alocamos na raiz, como podemos ver na arvore exemplar ele também tem
       filhos e para seguir com a padronização da árvore ligamos o seu filho ao nó acima do nó removido, que no caso seria ligar o 79 ao 89.
 
+- Árvore AVL, o que é? É uma árvore binária de busca que segue os mesmo conceitos da árvore binária de busca convencional, porém possui como propriedades
+  próprias como: Para todo nó dentro de uma AVL, a diferença da altura entre a sub-árvore esquerda e a sub-árvore a direita daquele nó vai ser no 
+  máximo um. Ou seja, ou as sub-árvores de ambos os lados tem examente o mesmo tamanho e a diferença é zero. Ou a diferença é igual a 
+  altura da outra + 1.
+
+  
