@@ -214,56 +214,57 @@
                                 /  \
                               77    82
 
-- Menor e maior elemento, como encontrar? Vamos usar a árvore do tópico anterior como exemplo (árvore binária de busca):
-  Digamos que desejamos adicionar dois elementos a essa árvore já existente, os elementos 7 e 100
+  * Menor e maior elemento, como encontrar? Vamos usar a árvore do tópico anterior como exemplo (árvore binária de busca):
+    Digamos que desejamos adicionar dois elementos a essa árvore já existente, os elementos 7 e 100
 
-  7 entraria em nossa árvore a esquerda do 11, pois o mesmo é menor e o 100 a direita do 81 pois o mesmo é maior
+    7 entraria em nossa árvore a esquerda do 11, pois o mesmo é menor e o 100 a direita do 81 pois o mesmo é maior
 
-  Olhando para esse padrão da nossa nova árvore, o menor elemento é o cara que tá mais a esquerda, que não tem filho a esquerda. No nosso
-  exemplo temos o 11 que deixou de ser o menor elemento quando o 7 foi introduzido a sua esquerda, mas isso não impede o nó de ter um filho a
-  direita, caso introduzissimos 12 por exemplo, a árvore seguiria descendo com seus específicos nós.
+    Olhando para esse padrão da nossa nova árvore, o menor elemento é o cara que tá mais a esquerda, que não tem filho a esquerda. No nosso
+    exemplo temos o 11 que deixou de ser o menor elemento quando o 7 foi introduzido a sua esquerda, mas isso não impede o nó de ter um filho a
+    direita, caso introduzissimos 12 por exemplo, a árvore seguiria descendo com seus específicos nós.
 
-  Da mesma maneira, o maior elemento é o cara que tá mais a direita, sem filho a direita.  
+    Da mesma maneira, o maior elemento é o cara que tá mais a direita, sem filho a direita.  
 
-- Removendo um nó de uma Árvore Binária de busca:
+  * Removendo um nó de uma Árvore Binária de busca:
 
-  Relembrando conceitos: temos que para cada nó de uma árvore, o filho a esquerda deve ser menor que o nó em si, já o direito maior.
-  Sabendo disso podemos relembrar que uma árvore binária de busca é a estrutura de dados que codifica a busca binária em si mesma 
-  com complexidade O(h). -> https://search.brave.com/search?q=complexidade+o%28n%29&spellcheck=0&conversation=096bd0e16d111e70dde0ffd0e60c8354af48
+    Relembrando conceitos: temos que para cada nó de uma árvore, o filho a esquerda deve ser menor que o nó em si, já o direito maior.
+    Sabendo disso podemos relembrar que uma árvore binária de busca é a estrutura de dados que codifica a busca binária em si mesma 
+    com complexidade O(h). -> https://search.brave.com/search?q=complexidade+o%28n%29&spellcheck=0&conversation=096bd0e16d111e70dde0ffd0e60c8354af48
 
-  Regra de remoção de um elemento: Precisamos conseguir remover o mesmo e ainda assim preservar a propriedade de tamanho dos nós. 
+    Regra de remoção de um elemento: Precisamos conseguir remover o mesmo e ainda assim preservar a propriedade de tamanho dos nós. 
 
-   Ex.
+    Ex.
 
-                    ___61___
-                ___/        \___
-               /                \
-             43                  89
-            /  \                /  \___
-          16    51            66       \___
-         /  \     \             \          \
-       11    32    55            79         160
-                                /  \       /
-                              77    82   90
+                      ___61___
+                  ___/        \___
+                /                \
+              43                  89
+              /  \                /  \___
+            16    51            66       \___
+          /  \     \             \          \
+        11    32    55            79         160
+                                  /  \       /
+                                77    82   90
 
-  Casos possíveis ao remover um elemento dentro de uma Árvore Binária de Busca:
+    Casos possíveis ao remover um elemento dentro de uma Árvore Binária de Busca:
 
-    Folha: Esse é o caso mais simples ao remover um elemento dentro de uma árvore binária de busca, pois é o elemento mais debaixo
-    da árvore e o mesmo não possui filhos, sendo assim 0 burocracia e 0 modificação de propriedade.
+      Folha: Esse é o caso mais simples ao remover um elemento dentro de uma árvore binária de busca, pois é o elemento mais debaixo
+      da árvore e o mesmo não possui filhos, sendo assim 0 burocracia e 0 modificação de propriedade.
 
-    Elemento tem filhos apenas de um lado: Quando o nó tem filhos a direita e esquerda NONE ou vice e versa. Não é tão mais complexo que a folha
-    ao fazer a remoção desse determinado nó, basta apenas ligar a sub-árvore que estava alocada no nó removido ao nó que antecedia esse nó removido,
-    assim não teremos problemas de realocação devido o valor que foi re-ligado já estar do seu devido lado da árvore, seja ele direito ou
-    esquerdo.
+      Elemento tem filhos apenas de um lado: Quando o nó tem filhos a direita e esquerda NONE ou vice e versa. Não é tão mais complexo que a folha
+      ao fazer a remoção desse determinado nó, basta apenas ligar a sub-árvore que estava alocada no nó removido ao nó que antecedia esse nó removido,
+      assim não teremos problemas de realocação devido o valor que foi re-ligado já estar do seu devido lado da árvore, seja ele direito ou
+      esquerdo.
 
-    Elemento tem filhos dos dois lados: Esse é um caso mais e complexo para realizar preservando a propriedade da árvore, pois ao fazer essa remoção
-    devemos encontrar um substituto para o nó removido, chamado de SUCESSOR. Para isso devemos pegar todos os elementos que são maiores que ele
-    (no caso os elementos do lado direito) e pegamos o menor elemento dentro desse conjunto de maiores elementos maiores que o nó removido. No caso
-    da nossa árvore exemplo, caso removessemos o 89, o SUCESSOR desse cara seria o 90 pois o mesmo é o menor valor mais próximo dentro do conjunto
-    de maiores valores que o 89. Pós fazer isso, removemos o 90 de sua devida posição e o realocamos no lugar do 89, deixando assim sua antiga
-    vaga com valor vazio.
+      Elemento tem filhos dos dois lados: Esse é um caso mais e complexo para realizar preservando a propriedade da árvore, pois ao fazer essa remoção
+      devemos encontrar um substituto para o nó removido, chamado de SUCESSOR. Para isso devemos pegar todos os elementos que são maiores que ele
+      (no caso os elementos do lado direito) e pegamos o menor elemento dentro desse conjunto de maiores elementos maiores que o nó removido. No caso
+      da nossa árvore exemplo, caso removessemos o 89, o SUCESSOR desse cara seria o 90 pois o mesmo é o menor valor mais próximo dentro do conjunto
+      de maiores valores que o 89. Pós fazer isso, removemos o 90 de sua devida posição e o realocamos no lugar do 89, deixando assim sua antiga
+      vaga com valor vazio.
 
-    Raiz da arvore: Esse é o caso mais drástico e complexo de ser resolvido, para encontrar seu SUCESSOR seguimos a lógica de procurar o menor
-    valor dentro do conjunto dos maiores valores. No nosso exemplo teríamos o 61, que se caso remido, substituiríamos o mesmo pelo 66, que é o cara
-    a esquerda sem filho a esquerda, pós isso tiramos o 66 de seus local e alocamos na raiz, como podemos ver na arvore exemplar ele também tem
-    filhos e para seguir com a padronização da árvore ligamos o seu filho ao nó acima do nó removido, que no caso seria ligar o 79 ao 89.
+      Raiz da arvore: Esse é o caso mais drástico e complexo de ser resolvido, para encontrar seu SUCESSOR seguimos a lógica de procurar o menor
+      valor dentro do conjunto dos maiores valores. No nosso exemplo teríamos o 61, que se caso remido, substituiríamos o mesmo pelo 66, que é o cara
+      a esquerda sem filho a esquerda, pós isso tiramos o 66 de seus local e alocamos na raiz, como podemos ver na arvore exemplar ele também tem
+      filhos e para seguir com a padronização da árvore ligamos o seu filho ao nó acima do nó removido, que no caso seria ligar o 79 ao 89.
+
