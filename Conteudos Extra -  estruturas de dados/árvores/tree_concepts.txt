@@ -129,24 +129,6 @@
             a direita do nó F - 4
 
             O mesmo valeria para os filhos sub-sequuentes: 8, 16, 32 e por aí vai... Seguindo a metodologia das potências de 2
-
-- O que é balanceamento e desbalanceamento de uma árvore? Trata-se de quando um dos lados de uma árvore possui mais nós do que outro.
-
-  * O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunto de (n) números passados abaixo:
-  
-  N = {15, 29, 49, 10, 8, 67, 59, 9, 13, 20, 14}
-  
-  Ex.
-              Desbalanceada
-              formula para calcular o fator de balanceamento: FB = (alt da sub-árvore ESQ - alt da sub-árvore DIR)
-
-                  15 <- Raiz
-                    \___
-                        27
-                          \___    -> O lado direito dessa árvore que possui os maiores valores estão em desbalanço com relação ao restante da estrutura
-                              49
-              
-              # https://www.youtube.com/watch?v=JAeQuNsKQWk <- Explicação detalhada das resoluções
   
 - Percursos em árvores
 
@@ -273,4 +255,26 @@
   máximo um. Ou seja, ou as sub-árvores de ambos os lados tem examente o mesmo tamanho e a diferença é zero. Ou a diferença é igual a 
   altura da outra + 1.
 
-  
+  Ex.
+      O
+     / \
+
+    Uma árvore composta por um único nó é uma árvore AVL, pois a diferença dela para seus filhos da esquerda ou direita é zero.
+
+  * O que é balanceamento e desbalanceamento de uma árvore? Trata-se de quando um dos lados de uma árvore possui mais nós do que outro.
+
+    * O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunto de (n) números passados abaixo:
+    
+    N = {15, 29, 49, 10, 8, 67, 59, 9, 13, 20, 14}
+    
+    Ex.
+        Desbalanceada
+        formula para calcular o fator de balanceamento: FB = (alt da sub-árvore ESQ - alt da sub-árvore DIR)
+
+            15 <- Raiz
+              \___
+                  27
+                    \___    -> O lado direito dessa árvore que possui os maiores valores estão em desbalanço com relação ao restante da estrutura
+                        49
+        
+        # https://www.youtube.com/watch?v=JAeQuNsKQWk <- Explicação detalhada das resoluções
