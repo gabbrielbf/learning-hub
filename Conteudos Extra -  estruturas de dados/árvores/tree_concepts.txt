@@ -277,4 +277,7 @@
                     \___    -> O lado direito dessa árvore que possui os maiores valores estão em desbalanço com relação ao restante da estrutura
                         49
         
-        # https://www.youtube.com/watch?v=JAeQuNsKQWk <- Explicação detalhada das resoluções
+      https://www.youtube.com/watch?v=l8IBdCb2BWA <- Explicação 1 detalhada das resoluções
+      https://www.youtube.com/watch?v=JAeQuNsKQWk <- Explicação 2 detalhada das resoluções
+
+      
