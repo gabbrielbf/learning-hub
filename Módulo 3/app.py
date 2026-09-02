@@ -1,4 +1,5 @@
 from flask import Flask
+from models.task import Task
 
 app = Flask(__name__)
 
