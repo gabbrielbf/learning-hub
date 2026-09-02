@@ -2,6 +2,8 @@ from flask import Flask
 
 app = Flask(__name__)
 
+# CRUD -> Create, read, update, delete.
+
 
 
 if __name__ == '__main__':
