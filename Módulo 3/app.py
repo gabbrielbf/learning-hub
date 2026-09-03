@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from models.task import Task
 
 app = Flask(__name__)
@@ -16,7 +16,8 @@ def create_task():
     # seu valor padrão seja vazio
     new_task = Task(id=task_id_control, title=data['title'], description=data.get('description', ''))
     task_id_control += 1 # lógica para definir que os IDs não se repitam, pois cada um deve ser unico
-    return 
+    tasks.append(new_task)
+    return jsonify({'message': 'New task created sucessful'})
 
 if __name__ == '__main__':
     app.run(debug=True)
