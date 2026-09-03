@@ -11,7 +11,9 @@ task_id_control = 1
 # Rota responsável por postar ou "inserir" um dado dentro da API
 @app.route('/tasks', methods=['POST'])
 def create_task():
+    global task_id_control
     data = request.get_json() # <- Recupera o que o cliente enviou pra a gente
+    
     # A nova task criada abaixo será derivada da nossa classe Task sua descrição tem dois elementos no data.get pois queremos que
     # seu valor padrão seja vazio
     new_task = Task(id=task_id_control, title=data['title'], description=data.get('description', ''))
