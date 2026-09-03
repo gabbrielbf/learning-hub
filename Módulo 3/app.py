@@ -33,7 +33,7 @@ def get_task():
                                       # Portanto todos eles possuem o método de retornar um dicionário com as informações que solicitamos
     output = {
                 'tasks': task_list, # A variavel output guarda um dicionario com uma lista de tasks também em formato de dicionário
-                'total_tasks': 0    # <- Conta quantas tasks temos em nosso dicionário
+                'total_tasks': len(task_list) # <- Conta quantas tasks temos em nosso dicionário
             }
     return jsonify(output)
 
