@@ -11,6 +11,7 @@ task_id_control = 1
 # Rota responsável por postar ou "inserir" um dado dentro da API
 @app.route('/tasks', methods=['POST'])
 def create_task():
+
     global task_id_control
     data = request.get_json() # <- Recupera o que o cliente enviou pra a gente
 
@@ -24,18 +25,15 @@ def create_task():
 # Rota responsável por retornar um dicionário com os dados de cada task
 @app.route('/tasks', methods=['GET'])
 def get_task():
-    
+
+    task_list = []
+
+    for task in tasks:
+        task_list.append(task.dict()) # Lembre-se que a lista de tasks original lá em cima possui objetos instânciados da classe 'Task'.
+                                      # Portanto todos eles possuem o método de retornar um dicionário com as informações que solicitamos
     output = {
-                'tasks': [ # A variavel output retorna um dicionario com uma chave que possui como valor uma lista possuindo
-                           # as inforamções da nossa classe Task. Possui também um contador de quantas tasks tem em nosso dicionário
-                    {
-                    'id': 0, 
-                    'title': 'str', 
-                    'description': 'str', 
-                    'completed': True
-                    }
-                ], 
-                'total_tasks': 0
+                'tasks': task_list, # A variavel output guarda um dicionario com uma lista de tasks também em formato de dicionário
+                'total_tasks': 0    # <- Conta quantas tasks temos em nosso dicionário
             }
 
 if __name__ == '__main__':
