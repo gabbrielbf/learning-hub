@@ -24,7 +24,7 @@ def create_task():
 
 # Rota responsável por retornar um dicionário com os dados de cada task
 @app.route('/tasks', methods=['GET'])
-def get_task():
+def get_tasks():
 
     task_list = []
 
@@ -36,6 +36,10 @@ def get_task():
                 'total_tasks': len(task_list) # <- Conta quantas tasks temos em nosso dicionário
             }
     return jsonify(output)
+
+@app.route('/tasks/<int:id>', methods=['GET'])
+def get_task(id):
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
