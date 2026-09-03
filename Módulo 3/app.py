@@ -13,13 +13,13 @@ task_id_control = 1
 def create_task():
     global task_id_control
     data = request.get_json() # <- Recupera o que o cliente enviou pra a gente
-    
-    # A nova task criada abaixo será derivada da nossa classe Task sua descrição tem dois elementos no data.get pois queremos que
+
+    # A nova task criada abaixo será derivada da nossa classe Task. Sua descrição tem dois elementos no data.get pois queremos que
     # seu valor padrão seja vazio
     new_task = Task(id=task_id_control, title=data['title'], description=data.get('description', ''))
     task_id_control += 1 # lógica para definir que os IDs não se repitam, pois cada um deve ser unico
     tasks.append(new_task)
-    return jsonify({'message': 'New task created sucessful'})
+    return jsonify({'message': 'New task created successfull'})
 
 if __name__ == '__main__':
     app.run(debug=True)
