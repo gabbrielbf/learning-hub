@@ -21,5 +21,22 @@ def create_task():
     tasks.append(new_task)
     return jsonify({'message': 'New task created successfull'})
 
+# Rota responsável por retornar um dicionário com os dados de cada task
+@app.route('/tasks', methods=['GET'])
+def get_task():
+    
+    output = {
+                'tasks': [ # A variavel output retorna um dicionario com uma chave que possui como valor uma lista possuindo
+                           # as inforamções da nossa classe Task. Possui também um contador de quantas tasks tem em nosso dicionário
+                    {
+                    'id': 0, 
+                    'title': 'str', 
+                    'description': 'str', 
+                    'completed': True
+                    }
+                ], 
+                'total_tasks': 0
+            }
+
 if __name__ == '__main__':
     app.run(debug=True)
