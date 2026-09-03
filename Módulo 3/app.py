@@ -35,6 +35,7 @@ def get_task():
                 'tasks': task_list, # A variavel output guarda um dicionario com uma lista de tasks também em formato de dicionário
                 'total_tasks': 0    # <- Conta quantas tasks temos em nosso dicionário
             }
+    return jsonify(output)
 
 if __name__ == '__main__':
     app.run(debug=True)
