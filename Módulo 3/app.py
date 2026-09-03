@@ -40,11 +40,13 @@ def get_tasks():
 # Rota responsável por retornar APENAS uma única task
 @app.route('/tasks/<int:id>', methods=['GET'])
 def get_task(id):
-    
+
+    # Para cada tarefa na lista de tarefas faça isso
     for t in tasks:
-        if t.id == id:
-            return jsonify(t.dict())
-        
+        if t.id == id: # Se a tarefa da vez tiver um ID parecido com o ID parâmetrado
+            return jsonify(t.dict()) # <- Retorne o dicionário específico
+
+    # Se não, retorne uma mensagem de erro com o código do erro, no caso [404].
     return jsonify({'message': 'The ID could not be found'}), 404
 
 if __name__ == '__main__':
