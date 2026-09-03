@@ -11,6 +11,9 @@ tasks = []
 @app.route('/tasks', methods=['POST'])
 def create_task():
     data = request.get_json() # <- Recupera o que o cliente enviou pra a gente
+    # A nova task criada abaixo será derivada da nossa classe Task sua descrição tem dois elementos no data.get pois queremos que
+    # seu valor padrão seja vazio
+    new_task = Task(title=data['title'], description=data.get('description', ''))
     return 
 
 if __name__ == '__main__':
