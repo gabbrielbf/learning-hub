@@ -37,9 +37,15 @@ def get_tasks():
             }
     return jsonify(output)
 
+# Rota responsável por retornar APENAS uma única task
 @app.route('/tasks/<int:id>', methods=['GET'])
 def get_task(id):
-    pass
+    
+    for t in tasks:
+        if t.id == id:
+            return jsonify(t.dict())
+        
+    return jsonify({'message': 'The ID could not be found'}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
