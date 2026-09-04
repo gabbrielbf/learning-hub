@@ -49,5 +49,10 @@ def get_task(id):
     # Se não, retorne uma mensagem de erro com o código do erro, no caso [404].
     return jsonify({'message': 'The ID could not be found'}), 404
 
+# Rota responsável por atualizar uma task específica através do ID
+@app.route('/tasks/,<int:id>', methods=['PUT'])
+def uptate_task(id):
+    pass
+
 if __name__ == '__main__':
     app.run(debug=True)
