@@ -58,6 +58,7 @@ def uptate_task(id):
     for t in tasks:
         if t.id == id:
             task = t
+            break
 
     if task == None: # Caso nossa tarefa seja VAZIO ou 'None' retornamos um erro
         return jsonify({'message': 'The ID could not be found'}), 404
@@ -78,6 +79,7 @@ def delete_task(id):
     for t in tasks:
         if t.id == id:
             task = id
+            break
 
     if task == None:
             return jsonify({'message': 'The ID could not be found'}), 404
