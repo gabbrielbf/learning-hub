@@ -50,7 +50,7 @@ def get_task(id):
     return jsonify({'message': 'The ID could not be found'}), 404
 
 # Rota responsável por atualizar uma task específica através do ID
-@app.route('/tasks/,<int:id>', methods=['PUT'])
+@app.route('/tasks/<int:id>', methods=['PUT'])
 def uptate_task(id):
 
     # Inciamos a task como vazia e conferimos ID por ID dentro das nossas tarefas cadastradas
@@ -68,6 +68,11 @@ def uptate_task(id):
     task.description = data['description']
     task.completed = data['completed']
     return jsonify({'message': 'Task update successfully'})
+
+# Rota responsável pela deleção de uma task através do ID assim como o 'PUT'
+@app.route('/tasks/<int:id>', methods=['DELETE'])
+def delete_task(id):
+    pass
     
 if __name__ == '__main__':
     app.run(debug=True)
