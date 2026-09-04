@@ -82,6 +82,9 @@ def delete_task(id):
     if task == None:
             return jsonify({'message': 'The ID could not be found'}), 404
 
+    # Caso chegue aqui, passamos pelas conferências
+    tasks.remove(task)
+    return jsonify({'Task deleted successfully'})
     
 if __name__ == '__main__':
     app.run(debug=True)
