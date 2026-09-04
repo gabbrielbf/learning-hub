@@ -72,7 +72,16 @@ def uptate_task(id):
 # Rota responsável pela deleção de uma task através do ID assim como o 'PUT'
 @app.route('/tasks/<int:id>', methods=['DELETE'])
 def delete_task(id):
-    pass
+
+    # Os dois blocos de código abaixo seguem a mesma lógica do 'PUT'
+    task = None
+    for t in tasks:
+        if t.id == id:
+            task = id
+
+    if task == None:
+            return jsonify({'message': 'The ID could not be found'}), 404
+
     
 if __name__ == '__main__':
     app.run(debug=True)
