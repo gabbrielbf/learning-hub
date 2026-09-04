@@ -20,7 +20,7 @@ def create_task():
     new_task = Task(id=task_id_control, title=data['title'], description=data.get('description', ''))
     task_id_control += 1 # lógica para definir que os IDs não se repitam, pois cada um deve ser unico
     tasks.append(new_task)
-    return jsonify({'message': 'New task created successfull'})
+    return jsonify({'message': 'New task created successfull', 'id': new_task.id})
 
 # Rota responsável por retornar um dicionário com os dados de cada task
 @app.route('/tasks', methods=['GET'])
