@@ -52,7 +52,22 @@ def get_task(id):
 # Rota responsável por atualizar uma task específica através do ID
 @app.route('/tasks/,<int:id>', methods=['PUT'])
 def uptate_task(id):
-    pass
 
+    # Inciamos a task como vazia e conferimos ID por ID dentro das nossas tarefas cadastradas
+    task = None
+    for t in tasks:
+        if t.id == id:
+            task = t
+
+    if task == None: # Caso nossa tarefa seja VAZIO ou 'None' retornamos um erro
+        return jsonify({'message': 'The ID could not be found'}), 404
+
+    # Se chegarmos aqui quer dizer que passamos por todas as conferências de erro
+    data = request.get_json() # <- Recuperando os dados obtidos pelo usuário e abaixo atualizaremos
+    task.title = data['title']
+    task.description = data['description']
+    task.completed = data['completed']
+    return jsonify({'message': 'Task update successfully'})
+    
 if __name__ == '__main__':
     app.run(debug=True)
