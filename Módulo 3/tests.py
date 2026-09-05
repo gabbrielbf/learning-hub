@@ -14,13 +14,21 @@ def test_create_task():
         'title': 'New task',
         'description': 'Description of new task'
     }
-    resposne = requests.post(f'{BASE_URL}/tasks', json=new_task_data)
-    assert resposne.status_code == 200
+    response = requests.post(f'{BASE_URL}/tasks', json=new_task_data)
+    assert response.status_code == 200
 
     # Aqui retornamos o corpo da mensagem retornada pela letra C do CRUD
-    response_json = resposne.json()
+    response_json = response.json()
     assert 'message' in response_json
     assert 'id' in response_json
 
     # Adicionando a lista de tasks para futuros testes com outras letras do CRUD
     tasks.append(response_json['id'])
+
+def test_get_tasks():
+
+    response = requests.get(f'{BASE_URL}/tasks')
+    assert response.status_code == 200
+    response_json = response.json() # <- Esse método nos retorna o corpo da nossa estrutura json
+    assert 'tasks' in response_json
+    assert 'total_tasks' in response_json
