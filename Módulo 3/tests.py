@@ -62,9 +62,19 @@ def test_update_task(): # Envia uma requisição para o endpoint de atualizaçã
         # Requisitando uma tarefa específica
         response = requests.get(f'{BASE_URL}/tasks/{task_id}')
         assert response.status_code == 200
-        
+
         response_json = response.json()
 
         assert response_json['completed'] == payload['completed']
         assert response_json['description'] == payload['description']
         assert response_json['title'] == payload['title']
+
+def test_delete_task():
+
+    if tasks:
+        task_id = tasks[0]
+        response = requests.delete(f'{BASE_URL}/tasks/{task_id}')
+        response.status_code == 200
+
+        response = requests.delete(f'{BASE_URL}/tasks/{task_id}')
+        assert response.status_code == 404 # Validando se a mesma requisição feita antes consta como inválida
