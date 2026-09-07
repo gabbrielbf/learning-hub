@@ -58,3 +58,13 @@ def test_update_task(): # Envia uma requisição para o endpoint de atualizaçã
         response_json = response.json()
 
         assert 'message' in response_json
+
+        # Requisitando uma tarefa específica
+        response = requests.get(f'{BASE_URL}/tasks/{task_id}')
+        assert response.status_code == 200
+        
+        response_json = response.json()
+
+        assert response_json['completed'] == payload['completed']
+        assert response_json['description'] == payload['description']
+        assert response_json['title'] == payload['title']
