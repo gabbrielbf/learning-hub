@@ -44,3 +44,15 @@ def test_get_task():
 
     assert task_id == response_json['id']
 
+def test_update_task(): # Envia uma requisição para o endpoint de atualização no app.py
+
+    if tasks:
+        task_id = tasks[0] # <- Pegando o primeiro item da lista
+        payload = {
+            'completed': False,
+            'description': 'New descripton',
+            'title': 'New title'
+        }
+        response = requests.put(f'{BASE_URL}/tasks/{task_id}', json=payload)
+        response.status_code == 200
+        response_json = response.json()
