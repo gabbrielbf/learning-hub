@@ -1,6 +1,7 @@
 from app import db
+from flask_login import UserMixin
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     # id[int], username[str], password[str]
     id = db.Column(db.Integer, primary_key=True) # Definindo o identificador com inteiro e criando a chave primária no qual serve como base
                                                  # para localizar determinado item dentro do banco
@@ -8,4 +9,4 @@ class User(db.Model):
                                                                       # se conseguimos criar um usuário com espaço vazio ou não
                                                                       # e 'unique' nos permite criar APENAS um usuário com o mesmo nome
     password = db.Column(db.String(80), nullable=False)
-    pass
+    
