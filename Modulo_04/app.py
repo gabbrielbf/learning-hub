@@ -7,3 +7,5 @@ app.config['SQLALCHEMY_DATABASE-URI'] = 'sqlite:///database.db' # <- Caminho que
 
 db = SQLAlchemy(app) # Armazenando uma instância da classe SQLalchemy com o APP sendo o ponto de partida
 
+if __name__ == '__main__':
+    app.run()
