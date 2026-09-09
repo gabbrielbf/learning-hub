@@ -11,6 +11,10 @@ login_manager = LoginManager()
 db.init_app(app) # Armazenando uma instância da classe SQLalchemy com o APP sendo o ponto de partida
 login_manager.init_app(app)
 
+# Criando tabelas vazias no banco caso as mesmas não existam
+with app.app_context():
+    db.create_all()
+
 # View login
 login_manager.login_view = 'login' # <- Setando como 'login' para encontrar a rota de login na login abaixo
 
