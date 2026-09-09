@@ -22,9 +22,15 @@ def login():
     # Lógica de login
     if username and password:
 
-        return jsonify({'message': 'User authenticated successfully'})
+        # Váriavel abaixo está armazenando o primeiro usuário com o mesmo nome da variável username acima, o método "first()" trabalha
+        # em conjunto com o parâmetro "unique" da classe User para garantir que temos APENAS um usuário com o mesmo nome
+        user = User.query.filter_by(username=username).first()
 
-    return jsonify({'message': 'Inválid credentials'}), 400
+        if user and user.password == password:
+
+            return jsonify({'message': 'User authenticated successfully'})
+
+    return jsonify({'message': 'Invalid credentials'}), 400
 
 if __name__ == '__main__':
     app.run()
