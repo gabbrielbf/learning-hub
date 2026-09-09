@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from models.user import User
 from database import db
-from flask_login import LoginManager
+from flask_login import LoginManager, login_user
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123456'
@@ -12,6 +12,13 @@ db.init_app(app) # Armazenando uma instância da classe SQLalchemy com o APP sen
 login_manager.init_app(app)
 
 # View login
+login_manager.login_view = 'login' # <- Setando como 'login' para encontrar a rota de login na login abaixo
+
+# Esse decorador abaixo nos permite recuperar com flask o objeto cadastrado dentro do banco de dados no formato da nossa classe 'User'
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
 @app.route('/login', methods=['POST'])
 def login():
 
@@ -27,6 +34,8 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if user and user.password == password:
+
+            login_user(user) # <- Autenticando o usuário com função da biblioteca
 
             return jsonify({'message': 'User authenticated successfully'})
 
