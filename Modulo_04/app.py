@@ -21,7 +21,8 @@ def login():
 
     # Lógica de login
     if username and password:
-        pass
+
+        return jsonify({'message': 'User authenticated successfully'})
 
     return jsonify({'message': 'Inválid credentials'}), 400
 
