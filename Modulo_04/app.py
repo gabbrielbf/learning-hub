@@ -65,7 +65,12 @@ def create_user():
     password = data.get('password')
 
     if username and password:
-        pass
+
+        user = User(username=username, password=password)
+        db.session.add(user)
+        db.session.commit()
+
+        return jsonify({'message': 'User registred successfully'})
 
     return jsonify({'message': 'Invalid credentials'}), 401
 
