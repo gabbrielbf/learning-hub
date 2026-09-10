@@ -91,9 +91,13 @@ def read_user(id_user):
 @login_required
 def update_user(id_user):
 
+    data = request.json
     user = User.query.get(id_user)
 
-    if user:
+    if user and data.get('password'):
+        user.password = data.get('password')
+        db.session.commit()
+
         return jsonify({'message': f'User [{id_user}] successfully updated'})
     
     return jsonify({'message': 'User not found'}), 404
