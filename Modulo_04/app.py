@@ -75,15 +75,28 @@ def create_user():
     return jsonify({'message': 'Invalid credentials'}), 401
 
 # Recuperando os dados de determinado usuário
-app.route('/user/<int:id_user>', methods=['GET'])
+@app.route('/user/<int:id_user>', methods=['GET'])
 @login_required
 def read_user(id_user):
+
     user = User.query.get(id_user)
 
     if user:
         return {'username': user.username}
 
-    return jsonify({'messge': 'User not found'}), 404
+    return jsonify({'message': 'User not found'}), 404
+
+# Atualizando determinado usuário
+@app.route('/user/<int:id_user>', methods=['PUT'])
+@login_required
+def update_user(id_user):
+
+    user = User.query.get(id_user)
+
+    if user:
+        return jsonify({'message': f'User [{id_user}] successfully updated'})
+    
+    return jsonify({'message': 'User not found'}), 404
 
 if __name__ == '__main__':
     app.run()
