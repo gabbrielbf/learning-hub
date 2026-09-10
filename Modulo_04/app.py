@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from models.user import User
 from database import db
-from flask_login import LoginManager, login_user, logout_user, login_required
+from flask_login import LoginManager, login_user, current_user, logout_user, login_required
 import os
 
 app = Flask(__name__)
@@ -108,6 +108,11 @@ def delete_user(id_user):
 
     user = User.query.get(id_user)
 
+    # Protegendo o programa de remover do banco um usuário já logado para evitar conflitos na API
+    # para assim sempre termos pelo menos uma pessoa capaz de autenticar
+    if id_user == current_user.id:
+        return jsonify({'message': 'Invalid removal'}), 403
+    
     if user:
         db.session.delete(user)
         db.session.commit()
