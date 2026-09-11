@@ -6,7 +6,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123456'
-app.config['SQLALCHEMY_DATABASE_URI'] = ""
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:admin123@127.0.0.1:3306/flask-crud'
 """
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(  # <- Caminho (ANTIGO) que o SQLAlchemy vai utilizar para conectar-se com nosso banco
     os.path.dirname(__file__), # Usando o os.path para localizar o arquivo LITERAL do banco de dados
