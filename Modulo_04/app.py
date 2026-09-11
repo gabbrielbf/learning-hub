@@ -45,7 +45,8 @@ def login():
         # em conjunto com o parâmetro "unique" da classe User para garantir que temos APENAS um usuário com o mesmo nome
         user = User.query.filter_by(username=username).first()
 
-        if user and user.password == password:
+        # Conferindo se temos usuario e se a senha em bites é igual a senha criptografada retornada pelo 'User' no banco de dados
+        if user and bcrypt.checkpw(str.encode(password), str.encode(user.password)):
 
             login_user(user) # <- Autenticando o usuário com função da biblioteca
 
