@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from models.user import User
 from database import db
 from flask_login import LoginManager, login_user, current_user, logout_user, login_required
-import os
+import bcrypt
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123456'
@@ -69,7 +69,10 @@ def create_user():
     
     if username and password:
 
-        user = User(username=username, password=password, role='user')
+        # Guardando na variavel uma string criptografada da nossa senha. Em bites usando o método da clase [str].encode
+        hashed_password = bcrypt.hashpw(str.encode(password), bcrypt.gensalt()) # <- Esse segundo parâmetro é padrão da própria biblioteca
+
+        user = User(username=username, password=hashed_password, role='user')
         db.session.add(user)
         db.session.commit()
 
