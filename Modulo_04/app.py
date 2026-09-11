@@ -69,7 +69,7 @@ def create_user():
 
     if username and password:
 
-        user = User(username=username, password=password)
+        user = User(username=username, password=password, role='user')
         db.session.add(user)
         db.session.commit()
 
