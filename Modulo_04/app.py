@@ -66,7 +66,7 @@ def create_user():
     data = request.json
     username = data.get('username')
     password = data.get('password')
-
+    
     if username and password:
 
         user = User(username=username, password=password, role='user')
@@ -97,6 +97,10 @@ def update_user(id_user):
     data = request.json
     user = User.query.get(id_user)
 
+    # Isso vai conferir se a permissão é de usuário e se o ID de atualização é diferente do ID que ele autenticou
+    if id_user != current_user.id and current_user.role == 'user':
+        return jsonify({'message': 'Invalid not suported'}), 403 # Isso aqui reconhece que encontramos o usuário porém ele não tem
+                                                                 # permissão para fazer tal operação
     if user and data.get('password'):
         user.password = data.get('password')
         db.session.commit()
@@ -110,6 +114,9 @@ def update_user(id_user):
 def delete_user(id_user):
 
     user = User.query.get(id_user)
+
+    if current_user.role != 'admin':
+        return ({'message': 'Operation not suported'}), 403
 
     # Protegendo o programa de remover do banco um usuário já logado para evitar conflitos na API
     # para assim sempre termos pelo menos uma pessoa capaz de autenticar
