@@ -6,11 +6,14 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '123456'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(  # <- Caminho que o SQLAlquemy vai utilizar para conectar-se com nosso banco
+app.config['SQLALCHEMY_DATABASE_URI'] = ""
+"""
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(  # <- Caminho (ANTIGO) que o SQLAlchemy vai utilizar para conectar-se com nosso banco
     os.path.dirname(__file__), # Usando o os.path para localizar o arquivo LITERAL do banco de dados
     'instance',
     'database.db'
-)
+) 
+"""
 
 login_manager = LoginManager()
 db.init_app(app) # Armazenando uma instância da classe SQLalchemy com o APP sendo o ponto de partida
