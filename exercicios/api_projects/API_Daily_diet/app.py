@@ -38,6 +38,7 @@ def load_user(user_id):
 def login():
 
     data = request.json
+    
     username = data.get('username')
     password = data.get('password')
 
@@ -79,6 +80,7 @@ def logout():
 def create_user():
 
     data = request.json
+
     username = data.get('username')
     password = data.get('password')
 
