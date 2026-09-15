@@ -134,7 +134,26 @@ def create_meal():
                 'message': 'Invalid date format'
             }), 400
 
-        
+        meal = Meal(
+            name=name,
+            description=description,
+            date_time=date_time,
+            is_on_diet=is_on_diet,
+            user_id=current_user.id
+        )
+
+        db.session.add(meal)
+        db.session.commit()
+
+        return jsonify({
+            'message': 'Meal registered successfully'
+        }), 201
+
+    return jsonify({
+        'message': 'Invalid meal data'
+    }), 400
+
+    
 
 if __name__ == '__main__':
     app.run()
