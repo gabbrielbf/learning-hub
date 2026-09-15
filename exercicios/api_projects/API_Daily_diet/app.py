@@ -59,5 +59,19 @@ def login():
         'message': 'Invalid credentials'
     }), 404
 
+# ==========
+# LOGOUT
+# ==========
+app.route('/logout', methods=['GET'])
+@login_required
+def logout():
+
+    logout_user()
+
+    return jsonify({
+        'message': 'Logout successful'
+    })
+
+
 if __name__ == '__main__':
     app.run()
