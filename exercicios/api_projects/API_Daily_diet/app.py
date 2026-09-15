@@ -106,7 +106,25 @@ def create_user():
         'message': 'Invalid credentials'
     }), 401
 
+# =============
+# CREATE MEAT
+# =============
+app.route('/meal', methods=['POST'])
+@login_required
+def create_meal():
 
+    data = request.json
+
+    name = data.get('name')
+    description = data.get('description')
+    date_time = data.get('date_time')
+    is_on_diet = data.get('is_on_diet')
+
+    if (name and description # <- Conferindo se todos os campos estão preenchidos corretamente 
+        and date_time is not None 
+        and is_on_diet is not None):
+
+        pass
 
 if __name__ == '__main__':
     app.run()
