@@ -31,7 +31,33 @@ login_manager.login_view = 'login'
 def load_user(user_id):
     return User.query.get(user_id)
 
+# ==========
+# LOGIN
+# ==========
+@app.route('/login', methodos=['POST'])
+def login():
 
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+
+    if username and password:
+
+        user = User.query.filter_by(username=username).first()
+
+        if user and bcrypt.checkpw(
+            str.encode(password),
+            str.encode(user.password)
+        ):
+            login_user(user)
+
+            return jsonify({
+                'message': 'User authenticated successfully'
+                })
+        
+    return ({
+        'message': 'Invalid credentials'
+    }), 404
 
 if __name__ == '__main__':
     app.run()
