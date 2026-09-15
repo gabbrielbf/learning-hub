@@ -164,7 +164,16 @@ def read_meals():
         user_id=current_user.id
     ).all()
 
-
+    return jsonify([
+        {
+            'id': meal.id,
+            'name': meal.name,
+            'description': meal.description,
+            'date_time': meal.date_time.isoformat(),
+            'is_on_diet': meal.is_on_diet
+        }
+        for meal in meals
+    ])
 
 if __name__ == '__main__':
     app.run()
