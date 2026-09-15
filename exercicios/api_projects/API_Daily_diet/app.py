@@ -12,3 +12,26 @@ from flask_login import (
 import bcrypt
 from datetime import datetime
 
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '123456'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:admin123@127.0.0.1:3307/daily-diet'
+
+login_manager = LoginManager()
+
+db.init_app(app)
+login_manager.init_app(app)
+
+# Criando tabelas caso as mesmas não existam
+with app.app_context():
+    db.create_all()
+
+login_manager.login_view = 'login'
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
+
+
+if __name__ == '__main__':
+    app.run()
