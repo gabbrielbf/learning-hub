@@ -109,7 +109,7 @@ def create_user():
     }), 401
 
 # =============
-# CREATE MEAT
+# CREATE MEAL
 # =============
 app.route('/meal', methods=['POST'])
 @login_required
@@ -153,7 +153,18 @@ def create_meal():
         'message': 'Invalid meal data'
     }), 400
 
-    
+# =============
+# LIST MEALS
+# =============
+app.route('/meals', methods=['GET'])
+@login_required
+def read_meals():
+
+    meals = Meal.query.filter_by(
+        user_id=current_user.id
+    ).all()
+
+
 
 if __name__ == '__main__':
     app.run()
