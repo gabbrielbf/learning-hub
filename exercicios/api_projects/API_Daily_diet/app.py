@@ -38,7 +38,7 @@ def load_user(user_id):
 def login():
 
     data = request.json
-    
+
     username = data.get('username')
     password = data.get('password')
 
@@ -126,7 +126,15 @@ def create_meal():
         and date_time is not None 
         and is_on_diet is not None):
 
-        pass
+        # Conferindo se o formato amazenado na variavel é o formato padrão mundial
+        try:
+            date_time = datetime.fromisoformat(date_time)
+        except ValueError:
+            return jsonify({
+                'message': 'Invalid date format'
+            }), 400
+
+        
 
 if __name__ == '__main__':
     app.run()
