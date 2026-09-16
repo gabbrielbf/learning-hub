@@ -202,5 +202,28 @@ def read_meal(id_meal):
         'is_on_diet': meal.is_on_diet
     })
 
+# =============
+# UPDATE MEAL
+# =============
+app.route('/meal/<int:id_meal>', methods=['PUT'])
+@login_required
+def update_meal(id_meal):
+
+    data = request.json
+
+    meal = Meal.query.get(id_meal)
+
+    if not meal:
+        return jsonify({
+            'message': 'Meal not found'
+        }), 404
+
+    if meal.user_id != current_user.id:
+        return jsonify({
+            'message': 'Operation not supported'
+        }), 403
+
+    
+
 if __name__ == '__main__':
     app.run()
