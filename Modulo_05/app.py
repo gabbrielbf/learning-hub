@@ -17,3 +17,12 @@ def pix_confirmation():
     return jsonify({
         'message': 'The payment has been confirmed'
     })
+
+# Rota com metodologia simples, apenas permitir que o usuário visualize 
+# o QR code de pagamento, realizar o pagamento em si e saber se o mesmo foi confirmado
+@app.route('/payments/pix/<int:payment_id>', methods=['GET']) # <- o payment_id nada mais é que o identificador do pagamento criado na primeira rota
+def payment_pix_page(payment_id):
+    return 'pagamento via pix'
+
+if __name__ == '__main__':
+    app.run(debug=True)
