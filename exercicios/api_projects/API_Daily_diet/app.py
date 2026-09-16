@@ -34,7 +34,7 @@ def load_user(user_id):
 # ==========
 # LOGIN
 # ==========
-@app.route('/login', methodos=['POST'])
+@app.route('/login', methods=['POST'])
 def login():
 
     data = request.json
@@ -279,6 +279,6 @@ def delete_meal(id_meal):
     return jsonify({
         'message': f'Meal [{id_meal}] deleted successfully'
     })
-    
+
 if __name__ == '__main__':
     app.run()
