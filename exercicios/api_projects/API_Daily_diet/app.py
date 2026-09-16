@@ -175,5 +175,21 @@ def read_meals():
         for meal in meals
     ])
 
+# =============
+# READ MEAL
+# =============
+app.route('/meal/<int:id_meal>', methods=['GET'])
+@login_required
+def read_meal(id_meal):
+
+    meal = Meal.query.get(id_meal)
+
+    if not meal:
+        return jsonify({
+            'message': 'Meal not found'
+        }), 404
+
+    
+
 if __name__ == '__main__':
     app.run()
