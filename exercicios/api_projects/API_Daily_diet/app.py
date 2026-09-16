@@ -63,7 +63,7 @@ def login():
 # ==========
 # LOGOUT
 # ==========
-app.route('/logout', methods=['GET'])
+@app.route('/logout', methods=['GET'])
 @login_required
 def logout():
 
@@ -111,7 +111,7 @@ def create_user():
 # =============
 # CREATE MEAL
 # =============
-app.route('/meal', methods=['POST'])
+@app.route('/meal', methods=['POST'])
 @login_required
 def create_meal():
 
@@ -156,7 +156,7 @@ def create_meal():
 # =============
 # LIST MEALS
 # =============
-app.route('/meals', methods=['GET'])
+@app.route('/meals', methods=['GET'])
 @login_required
 def read_meals():
 
@@ -178,7 +178,7 @@ def read_meals():
 # =============
 # READ MEAL
 # =============
-app.route('/meal/<int:id_meal>', methods=['GET'])
+@app.route('/meal/<int:id_meal>', methods=['GET'])
 @login_required
 def read_meal(id_meal):
 
@@ -205,7 +205,7 @@ def read_meal(id_meal):
 # =============
 # UPDATE MEAL
 # =============
-app.route('/meal/<int:id_meal>', methods=['PUT'])
+@app.route('/meal/<int:id_meal>', methods=['PUT'])
 @login_required
 def update_meal(id_meal):
 
