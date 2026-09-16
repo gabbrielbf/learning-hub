@@ -189,7 +189,10 @@ def read_meal(id_meal):
             'message': 'Meal not found'
         }), 404
 
-    
+    if meal.user_id != current_user.id:
+        return jsonify({
+            'message': 'Operation not supported'
+        }), 403
 
 if __name__ == '__main__':
     app.run()
