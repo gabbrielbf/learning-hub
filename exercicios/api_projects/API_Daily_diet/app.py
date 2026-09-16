@@ -254,5 +254,31 @@ def update_meal(id_meal):
         'message': 'Invalid meal data'
     }), 400
 
+# =============
+# DELETE MEAL
+# =============
+@app.route('/meal/<int:id_meal>', methods=['DELETE'])
+@login_required
+def delete_meal(id_meal):
+
+    meal = Meal.query.get(id_meal)
+
+    if not meal:
+        return jsonify({
+            'message': 'Meal not found'
+        }), 404
+
+    if meal.id != current_user.id:
+        return jsonify({
+            'message': 'Operation not supported'
+        }), 403
+
+    db.session.delete(meal)
+    db.session.commit()
+
+    return jsonify({
+        'message': f'Meal [{id_meal}] deleted successfully'
+    })
+    
 if __name__ == '__main__':
     app.run()
