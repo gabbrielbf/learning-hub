@@ -239,7 +239,20 @@ def update_meal(id_meal):
                 'message': 'Invalid date format'
             }), 400
 
-        
+        meal.name = name
+        meal.description = description
+        meal.date_time = date_time
+        meal.is_on_diet = is_on_diet
+
+        db.session.commit()
+
+        return jsonify({
+            'message': f'Meal [{id_meal}] successfully updated'
+        })
+
+    return jsonify({
+        'message': 'Invalid meal data'
+    }), 400
 
 if __name__ == '__main__':
     app.run()
