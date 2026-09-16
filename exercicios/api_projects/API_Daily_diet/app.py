@@ -194,5 +194,13 @@ def read_meal(id_meal):
             'message': 'Operation not supported'
         }), 403
 
+    return jsonify({
+        'id': meal.id,
+        'name': meal.name,
+        'description': meal.description,
+        'date_time': meal.date_time.isoformat(),
+        'is_on_diet': meal.is_on_diet
+    })
+
 if __name__ == '__main__':
     app.run()
