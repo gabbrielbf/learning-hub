@@ -9,3 +9,11 @@ def create_payment_pix():
     return jsonify({
         'message': 'The payment has been created'
     })
+
+# Rota responsável por dar uma porta a uma instituição 
+# financeira que recebeu o pagamento foi recebido ou não
+@app.route('/payments/pix/confirmation', methods=['POST'])
+def pix_confirmation():
+    return jsonify({
+        'message': 'The payment has been confirmed'
+    })
