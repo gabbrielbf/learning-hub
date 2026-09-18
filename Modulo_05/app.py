@@ -8,6 +8,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = 'SECRET_KEY_WEBSOCKET'
 db.init_app(app)
 
+with app.app_context():
+    db.create_all()
+
 # Rota responsável por criar o registro de pagamento dentro do banco 
 # de dados e retonar ao usuário as informações o específico registro
 @app.route('/payments/pix', methods=['POST'])
