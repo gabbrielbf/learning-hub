@@ -2,9 +2,14 @@ from flask import Flask, jsonify, request
 from repository.database import db
 from models.payment import Payment
 from datetime import datetime, timedelta
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(
+    os.path.dirname(__file__),
+    'instance',
+    'database.db'
+)
 app.config['SECRET_KEY'] = 'SECRET_KEY_WEBSOCKET'
 db.init_app(app)
 
