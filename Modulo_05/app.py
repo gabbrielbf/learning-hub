@@ -1,8 +1,9 @@
 from flask import Flask, jsonify
 from repository.database import db
+from models.payment import Payment
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABSE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = 'SECRET_KEY_WEBSOCKET'
 db.init_app(app)
 
