@@ -2,7 +2,8 @@ from flask import Flask, jsonify
 from repository.database import db
 
 app = Flask(__name__)
-
+app.config['SQLALCHEMY_DATABSE_URI'] = 'sqlite:///database.db'
+app.config['SECRET_KEY'] = 'SECRET_KEY_WEBSOCKET'
 db.init_app(app)
 
 # Rota responsável por criar o registro de pagamento dentro do banco 
