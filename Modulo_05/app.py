@@ -1,6 +1,9 @@
 from flask import Flask, jsonify
+from repository.database import db
 
 app = Flask(__name__)
+
+db.init_app(app)
 
 # Rota responsável por criar o registro de pagamento dentro do banco 
 # de dados e retonar ao usuário as informações o específico registro
