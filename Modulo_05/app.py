@@ -1,6 +1,7 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from repository.database import db
 from models.payment import Payment
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -11,6 +12,16 @@ db.init_app(app)
 # de dados e retonar ao usuário as informações o específico registro
 @app.route('/payments/pix', methods=['POST'])
 def create_payment_pix():
+
+    data = request.get_json()
+
+    if 'value' not in data:
+        return jsonify({
+            'message': 'Invalid value'
+        }), 400
+
+    expiration_date = datetime.now() + timedelta(minutes=30)
+
     return jsonify({
         'message': 'The payment has been created'
     })
