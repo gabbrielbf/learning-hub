@@ -1,3 +1,6 @@
+import uuid
+import qrcode
+
 class Pix:
     def __init__(self):
         pass
@@ -6,9 +9,16 @@ class Pix:
 
         # Criando pagamento na instituição financeira, como não 
         # faremos integração com nenhum banco, os dados serão gerados aqui
-        bank_payment_id = None
+        bank_payment_id = uuid.uuid4()
+
+        # Criando qr code COPIA e COLA ilusório
+        hash_payment = f'hash_payment_{bank_payment_id}'
+
+        # Criando e salvando imagem em si do qr code
+        img = qrcode.make(hash_payment)
+        img.save(f'static/img/qr_code_payment_{bank_payment_id}.png')
 
         return {
-            'bank_payment_id': '',
-            'qr_code_path': ''
+            'bank_payment_id': bank_payment_id,
+            'qr_code_path': f'qr_code_payment_{bank_payment_id}'
         }
