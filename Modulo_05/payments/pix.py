@@ -1,5 +1,4 @@
-import uuid
-import qrcode
+import uuid, qrcode, os
 
 class Pix:
     def __init__(self):
@@ -14,9 +13,14 @@ class Pix:
         # Criando qr code COPIA e COLA ilusório
         hash_payment = f'hash_payment_{bank_payment_id}'
 
+        # Encontrando o caminho da pasta para gerar arquivo e guardar o qrcode
+        basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+        image_dir = os.path.join(basedir, 'static', 'img')
+        image_path = os.path.join(image_dir, f'qr_code_payment_{bank_payment_id}.png')
+
         # Criando e salvando imagem em si do qr code
         img = qrcode.make(hash_payment)
-        img.save(f'static/img/qr_code_payment_{bank_payment_id}.png')
+        img.save(image_path)
 
         return {
             'bank_payment_id': bank_payment_id,
