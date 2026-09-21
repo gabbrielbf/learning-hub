@@ -9,7 +9,7 @@ class Pix:
 
         # Criando pagamento na instituição financeira, como não 
         # faremos integração com nenhum banco, os dados serão gerados aqui
-        bank_payment_id = uuid.uuid4()
+        bank_payment_id = str(uuid.uuid4())
 
         # Criando qr code COPIA e COLA ilusório
         hash_payment = f'hash_payment_{bank_payment_id}'
