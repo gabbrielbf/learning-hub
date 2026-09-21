@@ -3,6 +3,7 @@ from repository.database import db
 from models.payment import Payment
 from datetime import datetime, timedelta
 import os
+from payments.pix import Pix
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(
@@ -31,6 +32,9 @@ def create_payment_pix():
     expiration_date = datetime.now() + timedelta(minutes=30)
     new_payment = Payment(value=data['value'], expiration_date=expiration_date)
 
+    pix = Pix()
+    data_payment_pix = pix.create_payment()
+    
     db.session.add(new_payment)
     db.session.commit()
 
