@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, send_file, current_app
+from flask import Flask, jsonify, request, send_file, current_app, render_template
 from repository.database import db
 from models.payment import Payment
 from datetime import datetime, timedelta
@@ -65,7 +65,7 @@ def pix_confirmation():
 # o QR code de pagamento, realizar o pagamento em si e saber se o mesmo foi confirmado
 @app.route('/payments/pix/<int:payment_id>', methods=['GET']) # <- o payment_id nada mais é que o identificador do pagamento criado na primeira rota
 def payment_pix_page(payment_id):
-    return 'pagamento via pix'
+    return render_template('payment.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
