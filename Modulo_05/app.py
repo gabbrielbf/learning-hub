@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file, current_app
 from repository.database import db
 from models.payment import Payment
 from datetime import datetime, timedelta
@@ -44,6 +44,14 @@ def create_payment_pix():
         'message': 'The payment has been created',
         'payment': new_payment.dict()
     })
+
+@app.route('/payments/pix/qr_code/<file_name>', methods=['GET'])
+def get_image(file_name):
+    
+    # Usa a raiz oficial do Flask para encontrar a pasta static independentemente de onde o ficheiro está
+    image_path = os.path.join(current_app.root_path, 'static', 'img', f'{file_name}.png')
+    
+    return send_file(image_path, mimetype='image/png')
 
 # Rota responsável por dar uma porta a uma instituição 
 # financeira que recebeu o pagamento foi recebido ou não
