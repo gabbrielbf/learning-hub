@@ -35,7 +35,7 @@ def create_payment_pix():
     pix = Pix()
     data_payment_pix = pix.create_payment()
     new_payment.bank_payment_id = data_payment_pix['bank_payment_id']
-    new_payment.qr_code = data_payment_pix['qr_code']
+    new_payment.qr_code = data_payment_pix['qr_code_path']
     
     db.session.add(new_payment)
     db.session.commit()
