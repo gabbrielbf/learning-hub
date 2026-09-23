@@ -4,6 +4,7 @@ from models.payment import Payment
 from datetime import datetime, timedelta
 import os
 from payments.pix import Pix
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(
@@ -12,7 +13,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(
     'database.db'
 )
 app.config['SECRET_KEY'] = 'SECRET_KEY_WEBSOCKET'
+
 db.init_app(app)
+socketio = SocketIO(app)
 
 with app.app_context():
     db.create_all()
@@ -74,5 +77,10 @@ def payment_pix_page(payment_id):
                            host='http://127.0.0.1:5000', 
                            qr_code=payment.qr_code)
 
+# Sessão de websockets
+@socketio.on('connect') # <- Esse decorator aguarda a conexão do usuário e do sistema
+def handle_connect():
+    pass
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, debug=True)
