@@ -65,7 +65,14 @@ def pix_confirmation():
 # o QR code de pagamento, realizar o pagamento em si e saber se o mesmo foi confirmado
 @app.route('/payments/pix/<int:payment_id>', methods=['GET']) # <- o payment_id nada mais é que o identificador do pagamento criado na primeira rota
 def payment_pix_page(payment_id):
-    return render_template('payment.html')
+
+    payment = Payment.query.get(payment_id)
+
+    return render_template('payment.html', 
+                           payment_id=payment.id, 
+                           value=payment.value, 
+                           host='http://127.0.0.1:5000', 
+                           qr_code=payment.qr_code)
 
 if __name__ == '__main__':
     app.run(debug=True)
