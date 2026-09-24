@@ -4,3 +4,4 @@ qrcode==8.2
 pillow==12.2.0
 Flask-SocketIO==5.6.1
 Flask-SQLAlchemy==3.1.1
+pytest
