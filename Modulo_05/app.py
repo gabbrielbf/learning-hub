@@ -118,5 +118,9 @@ def payment_pix_page(payment_id):
 def handle_connect():
     pass
 
+@socketio.on('disconnect')
+def handle_disconnect():
+    pass
+
 if __name__ == '__main__':
     socketio.run(app, debug=True)
