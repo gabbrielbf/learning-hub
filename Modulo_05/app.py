@@ -98,6 +98,10 @@ def payment_pix_page(payment_id):
 
     payment = Payment.query.get(payment_id)
 
+    # Conferindo se o pagamento não foi encontrado para gerar a página 404
+    if not payment:
+        return render_template('404.html')
+
     if payment.paid:
         return render_template('confirmed_payment.html', 
                                payment_id=payment.id, 
