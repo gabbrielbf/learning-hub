@@ -13,3 +13,8 @@ class Calculator1:
 
         input_data = body['number']
         return input_data
+
+    def __first_proccess(self, first_number: float) -> float:
+        first_step = (first_number / 4) + 7
+        second_step = (first_step ** 2) * 0.257
+        return second_step
