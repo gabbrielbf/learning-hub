@@ -8,7 +8,11 @@ class Calculator1:
         splited_number = input_data / 3
 
         first_proccess_result = self.__first_proccess(splited_number)
-        return first_proccess_result
+        second_process_result = self.__second_proccess(splited_number)
+
+        calc_result = first_proccess_result + second_process_result + splited_number
+        response = self.format_response(calc_result)
+        return response
 
     def __validate_body(self, body: Dict) -> float:
         if 'number' not in body:
@@ -21,3 +25,16 @@ class Calculator1:
         first_step = (first_number / 4) + 7
         second_step = (first_step ** 2) * 0.257
         return second_step
+
+    def __second_proccess(self, second_number: float) -> float:
+        first_step = (second_number ** 2.121)
+        second_step = (first_step / 5) + 1
+        return second_step
+
+    def format_response(self, calc_result: float) -> Dict:
+        return {
+            "data":{
+                "Calculator": 1,
+                "Result": calc_result
+            }
+        }
