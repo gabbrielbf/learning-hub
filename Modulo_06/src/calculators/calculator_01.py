@@ -8,9 +8,9 @@ class Calculator1:
         splited_number = input_data / 3
 
         first_proccess_result = self.__first_proccess(splited_number)
-        second_process_result = self.__second_proccess(splited_number)
+        second_proccess_result = self.__second_proccess(splited_number)
 
-        calc_result = first_proccess_result + second_process_result + splited_number
+        calc_result = first_proccess_result + second_proccess_result + splited_number
         response = self.format_response(calc_result)
         return response
 
