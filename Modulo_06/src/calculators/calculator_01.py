@@ -7,6 +7,9 @@ class Calculator1:
         input_data = self.__validate_body(body)
         splited_number = input_data / 3
 
+        first_proccess_result = self.__first_proccess(splited_number)
+        return first_proccess_result
+
     def __validate_body(self, body: Dict) -> float:
         if 'number' not in body:
             raise Exception('Body has a bad formatation!')
