@@ -13,3 +13,12 @@ def test_calculate():
     calc1 = Calculator1()
 
     response = calc1.calculate(mock_request)
+
+    # Testando o formato da resposta
+    assert 'data' in response 
+    assert 'Calculator' in response['data']
+    assert 'result' in response['data']
+
+    # Testando assertividade do cálculo
+    assert response['data']['result'] == 14.25
+    assert response['data']['Calculator'] == 1
