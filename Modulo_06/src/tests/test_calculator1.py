@@ -1,4 +1,4 @@
-from src.calculators.calculator_01 import Calculator1
+from src.calculators.calculator1 import Calculator1
 from typing import Dict
 from pytest import raises
 
