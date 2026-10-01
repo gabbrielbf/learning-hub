@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from src.calculators.calculator_01 import Calculator1
+from src.calculators.calculator1 import Calculator1
 
 calc_route_bp = Blueprint('calc_routes', __name__)
 
