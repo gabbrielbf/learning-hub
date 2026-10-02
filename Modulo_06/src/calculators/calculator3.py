@@ -46,7 +46,7 @@ class Calculator3:
         return{
             'data': {
                 'Calculator': 3,
-                'value': round(variance),
+                'value': variance,
                 'success': True
             }
         }
