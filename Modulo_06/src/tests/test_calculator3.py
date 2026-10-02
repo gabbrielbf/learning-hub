@@ -7,7 +7,7 @@ class MockRequest:
     def __init__(self, body: Dict) -> None:
         self.json = body
 
-def test_calculate():
+def test_calculate_with_variance_error():
     mock_request = MockRequest({ 'numbers': [1, 2, 3, 4, 5] })
     calc3 = Calculator3(NumpyHandler())
 
@@ -16,4 +16,10 @@ def test_calculate():
 
     assert str(exinfo.value) == 'Failure in the process: Variance is less than multiplication'
 
+def test_calculate():
+    # mock_request = MockRequest({ 'numbers': [1, 2, 3, 4, 5] })
+    # calc3 = Calculator3(NumpyHandler())
     
+    # response = calc3.calculate(mock_request)
+
+    pass
