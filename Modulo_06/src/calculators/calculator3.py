@@ -11,7 +11,7 @@ class Calculator3:
         body = request.json
         input_data = self.__validate_body(body)
 
-
+        variance = self.__calculate_variance(input_data)
 
     def __validate_body(self, body: Dict) -> List[float]:
         if 'numbers' not in body:
