@@ -32,4 +32,4 @@ def test_calculate():
     
     response = calc3.calculate(mock_request)
 
-    assert response == {'data': {'Calculator': 3, 'value': 1568.16, 'Success': True}}
+    assert response == {'data': {'Calculator': 3, 'value': 1568.16, 'success': True}}
