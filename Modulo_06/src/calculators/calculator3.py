@@ -23,3 +23,10 @@ class Calculator3:
     def __calculate_variance(self, numbers: List[float]) -> float:
         variance = self.__driver_handler.variance(numbers)
         return variance
+
+    def __calculate_multplication(self, numbers: List[float]) -> float:
+        multiplication = 1
+        for number in numbers:
+            multiplication *= number
+
+        return multiplication
