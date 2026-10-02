@@ -11,7 +11,9 @@ class Calculator3:
         body = request.json
         input_data = self.__validate_body(body)
 
+        # Calculando a variancia de N números e multiplicação de N números
         variance = self.__calculate_variance(input_data)
+        multiplication = self.__calculate_multplication(input_data)
 
     def __validate_body(self, body: Dict) -> List[float]:
         if 'numbers' not in body:
