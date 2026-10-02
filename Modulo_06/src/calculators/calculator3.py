@@ -16,6 +16,9 @@ class Calculator3:
         multiplication = self.__calculate_multplication(input_data)
 
         self.__verify_results(variance, multiplication)
+        
+        formated_response = self.__format_response(multiplication)
+        return formated_response
 
     def __validate_body(self, body: Dict) -> List[float]:
         if 'numbers' not in body:
@@ -38,3 +41,12 @@ class Calculator3:
     def __verify_results(self, variance: float, multiplication: float) -> None:
         if variance < multiplication:
             raise Exception('Failure in the process: Variance is less than multiplication')
+
+    def __format_response(self, variance: float) -> Dict:
+            return{
+                'data': {
+                    'Calculator': 3,
+                    'value': round(variance),
+                    'success': True
+                }
+            }
