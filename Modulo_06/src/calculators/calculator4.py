@@ -6,7 +6,7 @@ from src.drivers.interfaces.driver_handler_interface import DriverHandlerInterfa
 class Calculator4:
 
     def __init__(self, driver_handler: DriverHandlerInterface) -> None:
-        self.driver_handler = driver_handler
+        self.__driver_handler = driver_handler
 
     def calculate(self, request: FlaskRequest) -> Dict: # type: ignore
         body = request.json
@@ -27,9 +27,8 @@ class Calculator4:
         return input_data
 
     def __calculate_average(self, numbers: List[float]) -> float:
-        total = sum(numbers)
-        average = total / len(numbers)
 
+        average = self.__driver_handler.mean(numbers)
         return average
 
     def __formated_response(self, average: float) -> Dict:
