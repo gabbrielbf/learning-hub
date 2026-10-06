@@ -1,8 +1,12 @@
 from flask import request as FlaskRequest
 from typing import Dict, List
 from src.errors.http_unprocessable_entity import HttpUnprocessableEntityError
+from src.drivers.interfaces.driver_handler_interface import DriverHandlerInterface
 
 class Calculator4:
+
+    def __init__(self, driver_handler: DriverHandlerInterface) -> None:
+        self.driver_handler = driver_handler
 
     def calculate(self, request: FlaskRequest) -> Dict: # type: ignore
         body = request.json
