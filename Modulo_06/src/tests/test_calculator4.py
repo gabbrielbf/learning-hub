@@ -30,3 +30,16 @@ def test_calculate_integration():
             'success': True
         }
     }
+
+def test_calculate_body_no_formated():
+
+    mock_request = MockRequest({
+        'anything': 1
+    })
+
+    calc4 = Calculator4(NumpyHandler())
+
+    with raises(Exception) as exinfo:
+        calc4.calculate(mock_request)
+
+    assert str(exinfo.value) == 'Body has a bad formatation!'
