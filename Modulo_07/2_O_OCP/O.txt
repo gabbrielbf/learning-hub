@@ -1,0 +1,6 @@
+- Principio aberto e fechado
+    "Um artefato de software deve estar aberto para extensão
+    mas fechado para modificação."
+
+Em outras palavras podemos dizer que o comportamento de um artefato
+de software deve ser extensível, sem ter que modificar esse artefato.
