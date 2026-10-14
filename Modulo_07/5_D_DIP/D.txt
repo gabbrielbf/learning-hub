@@ -1,0 +1,8 @@
+- Princípio da inversão da dependência
+    Módulos de alto nível não devem depender
+    diretamente dos módulos de baixo nível
+
+"O princípio da inversão da dependência (DIP) nos diz
+que os sistemas mais flexíveis são aqueles em que aqueles
+dependências do código-fonte referem-se apenas a abstrações,
+não a concreções."
