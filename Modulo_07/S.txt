@@ -1,0 +1,7 @@
+- Principio da responsabilidade única
+    "Um módulo deve ser apenas um, e apenas um, motivo para alteração"
+
+Um módulo deve ser especializado em um único assunto e possuir apenas
+uma única responsabilidade dentro do nosso software.
+
+"Um módulo é apenas um conjunto coeso de funções e estrutura de dados"
