@@ -1,0 +1,8 @@
+- Princípio de substituição de Liskov:
+    Objetos podem ser substituidos por seus subtipos sem que
+    isso afete a execução do programa.
+
+"O LSP pode e deve ser estendido ao nível da arquitetura. Uma
+simples violação de substituição pode fazer com que a arquitetura
+de um sistema seja poluída com uma quantidade significativa quantidade
+de mecanismos extras."
