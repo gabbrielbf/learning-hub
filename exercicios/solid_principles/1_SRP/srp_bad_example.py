@@ -8,25 +8,58 @@ classes com suas devidas responsabilidades.
 
 '''
 
+class Connect:
+
+    def __init__(self):
+        self.__connect_api()
+
+    def __connect_api(self):
+        print('Connecting on API')
+
 
 class TaskHandler:
-    def conect_api():
-        pass
 
-    def create_task():
-        pass
+    def task_handle(self, task: str) -> None:
+        if not isinstance(task, str):
+            error_handler = ErrorHandler()
+            error_handler.__handle_report()
+        else:
+            self.__create_task('Play footbal')
+            self.__update_task('Play footbal')
+            self.__remove_task('Play footbal')
 
-    def update_task():
-        pass
+    def __create_task(self, task: str) -> None:
+        print(f'Creating TASK: {task}')
 
-    def remove_task():
-        pass
+    def __update_task(self, task: str) -> None:
+        print(f'Updating TASK: {task}')
 
-    def send_notification():
-        pass
+    def __remove_task(self, task: str) -> None:
+        print(f'Removing TASK: {task}')
 
-    def generate_report():
-        pass
 
-    def send_report():
-        pass
+class Notification:
+
+    def handle_notification(self) ->  None:
+        self.__send_notification('Sending notification')
+
+    def __send_notification(self, message: str) -> str:
+        print(message)
+
+
+class ErrorReport:
+
+    def __raise_error(self, message: str) -> Exception:
+        raise Exception(message)
+
+
+class ErrorHandler(ErrorReport):
+
+    def __handle_report(self) -> None:
+        self.__send_report()
+    
+    def __generate_report(self):
+        print('TASK NOT SUPPORTED')
+
+    def __send_report(self):
+        self.__raise_error(f'ERROR reported: [{self.__generate_report}]')
