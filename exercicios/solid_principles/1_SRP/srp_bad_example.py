@@ -8,58 +8,80 @@ classes com suas devidas responsabilidades.
 
 '''
 
-class Connect:
-
+class ApiConnection:
+    """Responsável exclusivamente por gerenciar a conexão com a API."""
     def __init__(self):
-        self.__connect_api()
+        self.connect()
 
-    def __connect_api(self):
-        print('Connecting on API')
-
-
-class TaskHandler:
-
-    def task_handle(self, task: str) -> None:
-        if not isinstance(task, str):
-            error_handler = ErrorHandler()
-            error_handler.__handle_report()
-        else:
-            self.__create_task('Play footbal')
-            self.__update_task('Play footbal')
-            self.__remove_task('Play footbal')
-
-    def __create_task(self, task: str) -> None:
-        print(f'Creating TASK: {task}')
-
-    def __update_task(self, task: str) -> None:
-        print(f'Updating TASK: {task}')
-
-    def __remove_task(self, task: str) -> None:
-        print(f'Removing TASK: {task}')
+    def connect(self):
+        print('Connecting to API...')
 
 
-class Notification:
-
-    def handle_notification(self) ->  None:
-        self.__send_notification('Sending notification')
-
-    def __send_notification(self, message: str) -> str:
-        print(message)
+class TaskValidator:
+    """Responsável exclusivamente por validar se a tarefa é válida."""
+    def validate(self, task: str) -> bool:
+        return isinstance(task, str)
 
 
-class ErrorReport:
-
-    def __raise_error(self, message: str) -> Exception:
+class ErrorHandler:
+    """Responsável exclusivamente por gerar e reportar erros."""
+    def handle_error(self, message: str) -> None:
+        print(f'ERROR reported: {message}')
         raise Exception(message)
 
 
-class ErrorHandler(ErrorReport):
+class NotificationService:
+    """Responsável exclusivamente por enviar notificações."""
+    def send_notification(self, message: str) -> None:
+        print(message)
 
-    def __handle_report(self) -> None:
-        self.__send_report()
+
+class TaskManager:
+    """ Responsável exclusivamente pelas 
+    operações de gerenciamento de tarefas. """
     
-    def __generate_report(self):
-        print('TASK NOT SUPPORTED')
+    def create_task(self, task: str) -> None:
+        print(f'Creating TASK: {task}')
 
-    def __send_report(self):
-        self.__raise_error(f'ERROR reported: [{self.__generate_report}]')
+    def update_task(self, task: str) -> None:
+        print(f'Updating TASK: {task}')
+
+    def remove_task(self, task: str) -> None:
+        print(f'Removing TASK: {task}')
+
+
+class TaskHandler:
+    """ Responsável por coordenar o fluxo de execução da tarefa, 
+    delegando cada responsabilidade para sua respectiva classe especializada. """
+    
+    def __init__(self, validator: TaskValidator, manager: TaskManager, error_handler: ErrorHandler):
+        self.validator = validator
+        self.manager = manager
+        self.error_handler = error_handler
+
+    def task_handle(self, task: str) -> None:
+        if not self.validator.validate(task):
+            self.error_handler.handle_error('TASK NOT SUPPORTED')
+        else:
+            self.manager.create_task(task)
+            self.manager.update_task(task)
+            self.manager.remove_task(task)
+
+
+if __name__ == "__main__":
+    
+    api = ApiConnection()
+    validator = TaskValidator()
+    manager = TaskManager()
+    error_handler = ErrorHandler()
+    
+    handler = TaskHandler(validator, manager, error_handler)
+
+    print("\n--- Testando com tarefa válida ---")
+    handler.task_handle("Estudar Princípios SOLID")
+
+    print("\n--- Testando com tarefa inválida (disparará exceção) ---")
+    try:
+        handler.task_handle(123) # <- Passando um inteiro em vez de string
+    except Exception as e:
+        print(f"Exceção capturada com sucesso: {e}")
