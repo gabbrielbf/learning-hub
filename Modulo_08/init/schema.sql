@@ -11,4 +11,12 @@ CREATE TABLE IF NOT EXISTS 'people' (
     pet_id INTEGER NOT NULL,
     FOREIGN KEY (pet_id) REFERENCES pets(id)
 );
-
+INSERT INTO pets (name, type)
+VALUES
+    ("cobra", "snake"),
+    ("cao", "dog"),
+    ("gato", "cat"),
+    ("juan", "hamster"),
+    ("burro", "donkey"),
+    ("shrek", "ogro"),
+    ("marisa", "dog"),
