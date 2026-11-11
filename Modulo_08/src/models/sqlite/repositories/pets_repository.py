@@ -1,5 +1,6 @@
 from typing import List
 from src.models.sqlite.entities.pets import PetsTable
+from sqlalchemy.orm.exc import NoResultFound
 
 class PetsRepository:
     def __init__(self, db_connection) -> None:
@@ -10,5 +11,5 @@ class PetsRepository:
             try:
                 pets = database.session.query(PetsTable).all()
                 return pets
-            except:
-                pass
+            except NoResultFound:
+                return []
