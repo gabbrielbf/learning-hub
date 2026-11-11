@@ -16,5 +16,8 @@ class DBConnectionHandler:
     def __enter__(self):
         session_maker = sessionmaker()
         self.session = session_maker(bind=self.__engine)
+        return self
+
+    
 
 db_connection_handler = DBConnectionHandler()
